@@ -1,7 +1,5 @@
-package com.luke.calculator;
+package org.luke;
 
-import com.luke.calculator.UI.NumButton;
-import com.luke.calculator.UI.NumTextField;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
@@ -12,29 +10,37 @@ import javafx.scene.input.ClipboardContent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import org.luke.UI.NumButton;
+import org.luke.UI.NumTextField;
 
 import java.util.function.UnaryOperator;
 
 public class MainApplication extends Application {
 
+
+    //设置固定窗口大小
+    boolean setResizable = false;
+
     //设置图标图片
-    String iconSrc = "file:src/main/resources/com/luke/calculator/Image/icon.png";
+    String iconSrc = "img/icon.png";
 
     //设置标题
     String Tittle = "计算器";
-
-
     //场景高度
-    double primaryMinStageHeight = 359.3333435058594;
+    double primaryStageHeight = 360;
+
     //场景宽度
-    double primaryMinStageWidth = 275.3333435058594;
+    double primaryStageWidth = 270;
 
     // 定义一个字符串来存储当前的运算符
     private String operator = "";
+
     // 定义一个变量来存储当前的第一个数字
     private double firstNumber = 0;
+
     // 定义一个变量来存储当前的第二个数字
     private double secondNumber = 0;
+
     @Override
     //在应用程序(Application)中创建主场景(primaryStage)
     public void start(Stage primaryStage) {
@@ -94,8 +100,6 @@ public class MainApplication extends Application {
 //-----------------------------------------------------------------------------------//
 
 
-
-
 //-----------------------------------------------------------------------------------//
 
         //使用 JavaFX 的 TextFormatter 来限制文本框中只能输入数字和小数点
@@ -110,9 +114,6 @@ public class MainApplication extends Application {
         // 定义计算器的文本框
         TextField numTextField = new NumTextField();
         numTextField.setTextFormatter(new TextFormatter<>(filter));
-
-        //numTextField.prefWidthProperty().bind(primaryStage.widthProperty());
-
 
         // 创建数字按钮
         Button button0 = new NumButton("0");
@@ -151,6 +152,8 @@ public class MainApplication extends Application {
         button9.setOnAction(e -> numTextField.setText(numTextField.getText() + "9"));
 
         buttonClear.setOnAction(e -> {
+            System.out.println("height:" + primaryStage.getHeight());
+            System.out.println("Width:" + primaryStage.getWidth());
             numTextField.setText("");
             firstNumber = 0;
             secondNumber = 0;
@@ -166,7 +169,7 @@ public class MainApplication extends Application {
             alertCopy.initOwner(primaryStage);//设置对话框的 icon 图标，参数是主窗口的 stage
             alertCopy.setTitle("提示");
             alertCopy.setHeaderText("您已复制运算结果");
-            alertCopy.setContentText("结果为"+ numTextField.getText());
+            alertCopy.setContentText("结果为" + numTextField.getText());
             alertCopy.showAndWait();
         });
 
@@ -216,10 +219,10 @@ public class MainApplication extends Application {
             numTextField.setText("");
         });
         buttonMod.setOnAction(e -> {
-            System.out.println("height:"+primaryStage.getHeight());
-            System.out.println("Width:"+primaryStage.getWidth());
             String temp = numTextField.getText();
             if (temp.equals("") || temp.equals(".")) {
+                System.out.println("height:" + primaryStage.getHeight());
+                System.out.println("Width:" + primaryStage.getWidth());
                 return;
             }
             operator = "%";
@@ -239,15 +242,25 @@ public class MainApplication extends Application {
             if (temp.equals("") || temp.equals(".")) {
                 return;
             }
-            secondNumber = Double.parseDouble(temp);
+            secondNumber = Double.parseDouble(numTextField.getText());
             switch (operator) {
-                case "+" -> numTextField.setText(String.valueOf(firstNumber + secondNumber));
-                case "-" -> numTextField.setText(String.valueOf(firstNumber - secondNumber));
-                case "*" -> numTextField.setText(String.valueOf(firstNumber * secondNumber));
-                case "/" -> numTextField.setText(String.valueOf(firstNumber / secondNumber));
-                case "%" -> numTextField.setText(String.valueOf(firstNumber % secondNumber));
-                default -> {
-                }
+                case "+":
+                    numTextField.setText(String.valueOf(firstNumber + secondNumber));
+                    break;
+                case "-":
+                    numTextField.setText(String.valueOf(firstNumber - secondNumber));
+                    break;
+                case "*":
+                    numTextField.setText(String.valueOf(firstNumber * secondNumber));
+                    break;
+                case "/":
+                    numTextField.setText(String.valueOf(firstNumber / secondNumber));
+                    break;
+                case "%":
+                    numTextField.setText(String.valueOf(firstNumber % secondNumber));
+                    break;
+                default:
+                    break;
             }
         });
 
@@ -285,22 +298,21 @@ public class MainApplication extends Application {
         GridPane.setConstraints(buttonCopy, 4, 5);
         GridPane.setConstraints(buttonMod, 1, 5);
 
-        standardGridPan.getChildren().addAll(buttonClear,buttonPlus, buttonMinus, buttonMultiply, buttonDivide, buttonEqual, buttonDot, buttonDel,buttonCopy,buttonMod);
+        standardGridPan.getChildren().addAll(buttonClear, buttonPlus, buttonMinus, buttonMultiply, buttonDivide, buttonEqual, buttonDot, buttonDel, buttonCopy, buttonMod);
 
 //-----------------------------------------------------------------------------------//
 
         //将menuBar和standardGridPan添加到Vbox布局
-        VBox vBoxlayout = new VBox(menuBar,numTextField,standardGridPan);
+        VBox vBoxlayout = new VBox(menuBar, numTextField, standardGridPan);
 
 //-----------------------------------------------------------------------------------//
 
         //把vBoxlayout放入主窗口(primaryStage)
 
         primaryStage.setScene(new Scene(vBoxlayout));
-        primaryStage.setWidth(primaryMinStageWidth);
-        primaryStage.setHeight(primaryMinStageWidth);
-        primaryStage.setMinWidth(primaryMinStageWidth);
-        primaryStage.setMinHeight(primaryMinStageHeight);
+        primaryStage.setWidth(primaryStageWidth);
+        primaryStage.setHeight(primaryStageHeight);
+        primaryStage.setResizable(setResizable);
         primaryStage.show();
 
         //主窗口(primaryStage)设置图标
@@ -312,9 +324,11 @@ public class MainApplication extends Application {
         //展示主窗口(primaryStage)
         primaryStage.show();
 
+        System.out.println("height:" + primaryStage.getHeight());
+        System.out.println("Width:" + primaryStage.getWidth());
 
-}
 
+    }
 
 
 //-----------------------------------------------------------------------------------//
