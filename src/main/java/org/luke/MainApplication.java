@@ -23,6 +23,7 @@ import javafx.stage.Stage;
 import org.luke.UI.NumButton;
 import org.luke.UI.NumTextField;
 
+
 import java.awt.*;
 import java.io.IOException;
 import java.net.URI;
@@ -36,7 +37,7 @@ public class MainApplication extends Application {
     boolean setResizable = false;
 
     //设置图标图片
-    String iconSrc = "img/icon.png";
+    String iconSrc = "img/Calcualtor.png";
 
     //设置标题
     String Tittle = "计算器";
@@ -185,7 +186,7 @@ public class MainApplication extends Application {
 //-----------------------------------------------------------------------------------//
 
             //图片地址
-            String img = "img/icon.png";
+            String img = "img/Calcualtor.png";
             //图片缩小比例
             double FitWidth = 50;
             //图片是否按比例缩放

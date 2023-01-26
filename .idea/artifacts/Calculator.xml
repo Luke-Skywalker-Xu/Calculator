@@ -1,24 +1,25 @@
 <component name="ArtifactManager">
-  <artifact type="javafx" build-on-make="true" name="Calculator">
+  <artifact type="javafx" name="Calculator">
     <output-path>$PROJECT_DIR$/out/artifacts/Calculator</output-path>
     <properties id="javafx-properties">
       <options>
+        <option name="alias" value="" />
         <option name="appClass" value="org.luke.MainApplication" />
         <option name="convertCss2Bin" value="true" />
         <option name="description" value="" />
         <option name="enabledSigning" value="true" />
-        <option name="height" value="270" />
         <option name="htmlPlaceholderId" value="" />
         <option name="icons">
           <JavaFxApplicationIcons>
-            <option name="windowsIcon" value="$PROJECT_DIR$/src/main/resources/Image/icon.ico" />
+            <option name="linuxIcon" value="$PROJECT_DIR$/src/main/resources/img/Calcualtor.png" />
+            <option name="windowsIcon" value="$PROJECT_DIR$/src/main/resources/img/Calcualtor.ico" />
           </JavaFxApplicationIcons>
         </option>
+        <option name="keystore" value="" />
         <option name="nativeBundle" value="all" />
         <option name="title" value="Calculator" />
-        <option name="vendor" value="luke" />
-        <option name="version" value="1.0.0" />
-        <option name="width" value="360" />
+        <option name="vendor" value="Luke" />
+        <option name="version" value="v0.1.0-alpha" />
       </options>
     </properties>
     <root id="root">
