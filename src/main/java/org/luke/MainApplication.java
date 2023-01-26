@@ -1,18 +1,32 @@
 package org.luke;
 
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Menu;
+import javafx.scene.control.MenuBar;
+import javafx.scene.control.MenuItem;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.Clipboard;
 import javafx.scene.input.ClipboardContent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import org.luke.UI.NumButton;
 import org.luke.UI.NumTextField;
 
+import java.awt.*;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.function.UnaryOperator;
 
 public class MainApplication extends Application {
@@ -72,13 +86,27 @@ public class MainApplication extends Application {
         //创建fileMenu
         Menu fileMenu = new Menu("文件");
 
+//-----------------------------------------------------------------------------------//
+
         //创建fileMenuItem
         MenuItem setMenuItem = new MenuItem("设置");
 
+
+//-----------------------------------------------------------------------------------//
+
+        //退出菜单项
         MenuItem editItem = new MenuItem("退出");
+        //执行动作
+        editItem.setOnAction(event -> {
+            //退出软件
+            Platform.exit();
+        });
+
+//-----------------------------------------------------------------------------------//
 
         //把setMenuItem加到fileMenu
         fileMenu.getItems().addAll(setMenuItem, editItem);
+
 
 //-----------------------------------------------------------------------------------//
 
@@ -89,8 +117,122 @@ public class MainApplication extends Application {
 
         //创建helpMenuItem
         MenuItem AboutMenuItem = new MenuItem("关于");
+        double width = primaryStageWidth;
+        double height = primaryStageHeight;
+        AboutMenuItem.setOnAction(event -> {
+            Alert aboutMenuItemalert = new Alert(Alert.AlertType.INFORMATION);
 
+
+//-----------------------------------------------------------------------------------//
+
+            Hyperlink linkGitHub = new Hyperlink("开源仓库");
+            linkGitHub.setUnderline(false);//是否需要下划线
+            linkGitHub.setPadding(new Insets(10, 0, 0, 2));
+            linkGitHub.setOnAction(event1 -> {
+                try {
+                    Desktop.getDesktop().browse(new URI("https://github.com/Luke-Skywalker-Xu/Calculator"));
+                } catch (IOException | URISyntaxException e) {
+                    e.printStackTrace();
+                }
+            });
+
+//-----------------------------------------------------------------------------------//
+
+            //"关于"文本
+            Text textAuthor = new Text();
+            textAuthor.setText(" 2023年1月25日 构建");
+            textAuthor.setStyle(" -fx-line-spacing: 10px;");
+
+//-----------------------------------------------------------------------------------//
+
+            //作者贡献者滑动栏
+            //贡献者名单
+            String textContributors = "作者: 许轲 (Luke)\n开源贡献者: ";
+            //贡献者名单css
+            String textContributorsCss = "-fx-line-spacing: 10px;";
+            //创建文本块
+            TextArea textAreaContributors = new TextArea();
+            //设置自动换行
+            textAreaContributors.setWrapText(true);
+            //设置文本
+            textAreaContributors.setText(textContributors);
+            //设置css样式
+            textAreaContributors.setStyle(textContributorsCss);
+            //设置不可以编辑
+            textAreaContributors.setEditable(false);
+
+            ScrollPane scrollPaneContributors = new ScrollPane();
+            scrollPaneContributors.setContent(textAreaContributors);
+            scrollPaneContributors.setFitToWidth(true);
+            scrollPaneContributors.setVbarPolicy(ScrollPane.ScrollBarPolicy.AS_NEEDED);
+            scrollPaneContributors.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
+
+
+            VBox vBoxContributors = new VBox(textAreaContributors, scrollPaneContributors);
+            vBoxContributors.setPadding(new Insets(10, 0, 0, 0));
+
+
+//-----------------------------------------------------------------------------------//
+            //创建垂直布局管理器
+            VBox vBox = new VBox(textAuthor, linkGitHub, vBoxContributors);
+
+            //设置垂直布局管理器侧边距
+            vBox.setPadding(new Insets(20, 10, 10, 20));
+
+            //把垂直布局管理器插入关于菜单提示面板
+            aboutMenuItemalert.getDialogPane().setContent(vBox);
+
+//-----------------------------------------------------------------------------------//
+
+            //图片地址
+            String img = "img/icon.png";
+            //图片缩小比例
+            double FitWidth = 50;
+            //图片是否按比例缩放
+            boolean isPreserveRatio = true;
+            //创建图片对象
+            Image image = new Image(img);
+            //创建图片视图对象
+            ImageView imageView = new ImageView(image);
+            //设置图片视图的缩小比例
+            imageView.setFitWidth(FitWidth);
+            //是否应保留图像的高宽比(按比例缩放)
+            imageView.setPreserveRatio(isPreserveRatio);
+            //把图片视图放在图像管理中做为定义好的图片
+            aboutMenuItemalert.setGraphic(imageView);
+
+//-----------------------------------------------------------------------------------//
+
+
+            //菜单提示框
+            //标题
+            String tittle = "关于 计算器";
+
+            //头文字
+            String HeaderText = "  计算器 v0.1.0-alpha";
+
+            //设置的标题
+            aboutMenuItemalert.setTitle(tittle);
+
+            //设置头文字
+            aboutMenuItemalert.setHeaderText(HeaderText);
+
+            //设置宽和高
+            aboutMenuItemalert.getDialogPane().setPrefSize(width, height);
+
+            //设置对话框的 icon 图标，参数是主窗口的 stage
+            aboutMenuItemalert.initOwner(primaryStage);
+
+            //运行模态窗口
+            aboutMenuItemalert.showAndWait();
+
+        });
+
+//-----------------------------------------------------------------------------------//
+
+        //把菜单项添入菜单
         helpMenu.getItems().addAll(AboutMenuItem);
+
 
 //-----------------------------------------------------------------------------------//
 
@@ -324,15 +466,10 @@ public class MainApplication extends Application {
         //展示主窗口(primaryStage)
         primaryStage.show();
 
-        System.out.println("height:" + primaryStage.getHeight());
-        System.out.println("Width:" + primaryStage.getWidth());
-
 
     }
 
-
 //-----------------------------------------------------------------------------------//
-
 
     public static void main(String[] args) {
         //启动

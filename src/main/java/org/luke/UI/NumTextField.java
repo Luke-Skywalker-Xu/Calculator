@@ -4,7 +4,6 @@ import javafx.scene.control.TextField;
 
 public class NumTextField extends TextField {
 
-
     public NumTextField() {
         super();
 
