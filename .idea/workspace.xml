@@ -12,10 +12,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7c8f7c35-549c-44d6-9e39-05e77f6adede" name="变更" comment="Calculator_Source_code_v0.1.1-alpha">
+    <list default="true" id="7c8f7c35-549c-44d6-9e39-05e77f6adede" name="变更" comment="增加设置选项窗体">
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/button.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/artifacts/Calculator.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/Calculator.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/luke/MainApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/luke/MainApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/luke/UI/NumButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/luke/UI/NumButton.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,6 +76,9 @@
       <recent name="D:\JavaFx\Calculator\src\main\java\org\luke" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\JavaFx\Calculator\src\main\java\org\luke\UI" />
+      <recent name="D:\JavaFx\Calculator\src\main\resources" />
+      <recent name="D:\JavaFx\Calculator\src\main\java\org\luke" />
       <recent name="D:\JavaFx\Calculator\src\main\resources\img" />
     </key>
     <key name="ExtractSuperBase.RECENT_KEYS">
@@ -85,7 +91,7 @@
       <module name="Calculator" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="org.luke.*" />
+          <option name="PATTERN" value="org.luke.UI.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -124,7 +130,14 @@
       <option name="project" value="LOCAL" />
       <updated>1674725116696</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="增加设置选项窗体">
+      <created>1674837799307</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1674837799307</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -142,6 +155,7 @@
     <MESSAGE value="init" />
     <MESSAGE value="增加&quot;关于&quot;界面" />
     <MESSAGE value="Calculator_Source_code_v0.1.1-alpha" />
-    <option name="LAST_COMMIT_MESSAGE" value="Calculator_Source_code_v0.1.1-alpha" />
+    <MESSAGE value="增加设置选项窗体" />
+    <option name="LAST_COMMIT_MESSAGE" value="增加设置选项窗体" />
   </component>
 </project>

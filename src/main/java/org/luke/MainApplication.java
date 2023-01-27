@@ -32,6 +32,7 @@ import java.util.function.UnaryOperator;
 
 public class MainApplication extends Application {
 
+    public static String ButtonColor = "default";
     String version = "  计算器 v0.1.2-alpha";
     //设置图标图片
     String iconSrc = "img/Calcualtor.png";
@@ -48,9 +49,33 @@ public class MainApplication extends Application {
     // 定义一个变量来存储当前的第二个数字
     private double secondNumber = 0;
 
+
     @Override
     //在应用程序(Application)中创建主场景(primaryStage)
     public void start(Stage primaryStage) {
+
+        // 创建数字按钮
+        Button button0 = new NumButton("0");
+        Button button1 = new NumButton("1");
+        Button button2 = new NumButton("2");
+        Button button3 = new NumButton("3");
+        Button button4 = new NumButton("4");
+        Button button5 = new NumButton("5");
+        Button button6 = new NumButton("6");
+        Button button7 = new NumButton("7");
+        Button button8 = new NumButton("8");
+        Button button9 = new NumButton("9");
+
+        Button buttonDel = new NumButton("⌫");// U+232B
+        Button buttonClear = new NumButton("C");
+        Button buttonDot = new NumButton("‧");//= U+2027
+        Button buttonPlus = new NumButton("＋");
+        Button buttonMinus = new NumButton("－");
+        Button buttonMultiply = new NumButton("×");
+        Button buttonDivide = new NumButton("÷");
+        Button buttonEqual = new NumButton("＝");
+        Button buttonCopy = new NumButton("⎘");//U+2398
+        Button buttonMod = new NumButton("M");
 
 //-----------------------------------------------------------------------------------//
         // 创建菜单栏
@@ -93,19 +118,83 @@ public class MainApplication extends Application {
 
 //-----------------------------------------------------------------------------------//
 
+
             Label appearanceLabel = new Label("外观:");
             ComboBox<String> appearanceComboBox = new ComboBox<>();
 
             appearanceComboBox.getItems().addAll("默认", "绿色", "粉色");
             appearanceComboBox.getSelectionModel().select("默认");
             appearanceComboBox.setOnAction(eventappearanceComboBox -> {
+
+                String PINK = "-fx-background-color:PINK";
+                String GREEN = "-fx-background-color:GREEN";
                 String selectedItem = appearanceComboBox.getValue();
                 if (selectedItem.equals("默认")) {
-                    System.out.println("默认");
+                    button0.setStyle(null);
+                    button1.setStyle(null);
+                    button2.setStyle(null);
+                    button3.setStyle(null);
+                    button4.setStyle(null);
+                    button5.setStyle(null);
+                    button6.setStyle(null);
+                    button7.setStyle(null);
+                    button8.setStyle(null);
+                    button9.setStyle(null);
+                    buttonDel.setStyle(null);
+                    buttonClear.setStyle(null);
+                    buttonDot.setStyle(null);
+                    buttonPlus.setStyle(null);
+                    buttonMinus.setStyle(null);
+                    buttonMultiply.setStyle(null);
+                    buttonDivide.setStyle(null);
+                    buttonEqual.setStyle(null);
+                    buttonCopy.setStyle(null);
+                    buttonMod.setStyle(null);
+
                 } else if (selectedItem.equals("绿色")) {
-                    System.out.println("绿色");
+                    button0.setStyle(GREEN);
+                    button1.setStyle(GREEN);
+                    button2.setStyle(GREEN);
+                    button3.setStyle(GREEN);
+                    button4.setStyle(GREEN);
+                    button5.setStyle(GREEN);
+                    button6.setStyle(GREEN);
+                    button7.setStyle(GREEN);
+                    button8.setStyle(GREEN);
+                    button9.setStyle(GREEN);
+                    buttonDel.setStyle(GREEN);
+                    buttonClear.setStyle(GREEN);
+                    buttonDot.setStyle(GREEN);
+                    buttonPlus.setStyle(GREEN);
+                    buttonMinus.setStyle(GREEN);
+                    buttonMultiply.setStyle(GREEN);
+                    buttonDivide.setStyle(GREEN);
+                    buttonEqual.setStyle(GREEN);
+                    buttonCopy.setStyle(GREEN);
+                    buttonMod.setStyle(GREEN);
+
                 } else if (selectedItem.equals("粉色")) {
-                    System.out.println("粉色");
+                    button0.setStyle(PINK);
+                    button1.setStyle(PINK);
+                    button2.setStyle(PINK);
+                    button3.setStyle(PINK);
+                    button4.setStyle(PINK);
+                    button5.setStyle(PINK);
+                    button6.setStyle(PINK);
+                    button7.setStyle(PINK);
+                    button8.setStyle(PINK);
+                    button9.setStyle(PINK);
+                    buttonDel.setStyle(PINK);
+                    buttonClear.setStyle(PINK);
+                    buttonDot.setStyle(PINK);
+                    buttonPlus.setStyle(PINK);
+                    buttonMinus.setStyle(PINK);
+                    buttonMultiply.setStyle(PINK);
+                    buttonDivide.setStyle(PINK);
+                    buttonEqual.setStyle(PINK);
+                    buttonCopy.setStyle(PINK);
+                    buttonMod.setStyle(PINK);
+
                 }
             });
 
@@ -302,29 +391,6 @@ public class MainApplication extends Application {
         TextField numTextField = new NumTextField();
         numTextField.setTextFormatter(new TextFormatter<>(filter));
 
-        // 创建数字按钮
-        Button button0 = new NumButton("0");
-        Button button1 = new NumButton("1");
-        Button button2 = new NumButton("2");
-        Button button3 = new NumButton("3");
-        Button button4 = new NumButton("4");
-        Button button5 = new NumButton("5");
-        Button button6 = new NumButton("6");
-        Button button7 = new NumButton("7");
-        Button button8 = new NumButton("8");
-        Button button9 = new NumButton("9");
-
-        Button buttonDel = new NumButton("⌫");// U+232B
-        Button buttonClear = new NumButton("C");
-        Button buttonDot = new NumButton("‧");//= U+2027
-        Button buttonPlus = new NumButton("＋");
-        Button buttonMinus = new NumButton("－");
-        Button buttonMultiply = new NumButton("×");
-        Button buttonDivide = new NumButton("÷");
-        Button buttonEqual = new NumButton("＝");
-        Button buttonCopy = new NumButton("⎘");//U+2398
-        Button buttonMod = new NumButton("M");
-
 
         // 为数字按钮设置单击事件处理器
         button0.setOnAction(e -> numTextField.setText(numTextField.getText() + "0"));
@@ -507,12 +573,16 @@ public class MainApplication extends Application {
         //主窗口(primaryStage)设置图标
         primaryStage.getIcons().add(new Image(iconSrc));
 
+        //主窗口(primaryStage)设置透明度
+        primaryStage.setOpacity(1);
+
         //主窗口(primaryStage)设置标题
         primaryStage.setTitle(primaryStageTittle);
 
         //展示主窗口(primaryStage)
         primaryStage.show();
     }
+
 
 //-----------------------------------------------------------------------------------//
 
