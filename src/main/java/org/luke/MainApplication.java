@@ -32,7 +32,7 @@ import java.util.function.UnaryOperator;
 
 public class MainApplication extends Application {
 
-    public static String ButtonColor = "default";
+
     String version = "  计算器 v0.1.2-alpha";
     //设置图标图片
     String iconSrc = "img/Calcualtor.png";
