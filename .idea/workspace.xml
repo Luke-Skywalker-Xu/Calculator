@@ -12,19 +12,23 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7c8f7c35-549c-44d6-9e39-05e77f6adede" name="变更" comment="增加&quot;关于&quot;界面">
+    <list default="true" id="7c8f7c35-549c-44d6-9e39-05e77f6adede" name="变更" comment="Calculator_Source_code_v0.1.1-alpha">
       <change beforePath="$PROJECT_DIR$/.idea/artifacts/Calculator.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/Calculator.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/luke/MainApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/luke/MainApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/img/icon.ico" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/img/Calcualtor.ico" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/img/icon.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/img/Calcualtor.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/img/icon.svg" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+        <option value="Interface" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -53,11 +57,12 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "last_opened_file_path": "D:/JavaFx/Calculator/src/main/resources/img/Calcualtor.png",
+    "last_opened_file_path": "D:/IDEAProjects/billiardsGame",
     "project.structure.last.edited": "工件",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.3873563",
-    "run.code.analysis.last.selected.profile": "pProject Default"
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "settings.editor.selected.configurable": "advanced.settings"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -69,6 +74,9 @@
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\JavaFx\Calculator\src\main\resources\img" />
+    </key>
+    <key name="ExtractSuperBase.RECENT_KEYS">
+      <recent name="org.luke" />
     </key>
   </component>
   <component name="RunManager">
@@ -109,7 +117,14 @@
       <option name="project" value="LOCAL" />
       <updated>1674694992117</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Calculator_Source_code_v0.1.1-alpha">
+      <created>1674725116696</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1674725116696</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -126,6 +141,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="init" />
     <MESSAGE value="增加&quot;关于&quot;界面" />
-    <option name="LAST_COMMIT_MESSAGE" value="增加&quot;关于&quot;界面" />
+    <MESSAGE value="Calculator_Source_code_v0.1.1-alpha" />
+    <option name="LAST_COMMIT_MESSAGE" value="Calculator_Source_code_v0.1.1-alpha" />
   </component>
 </project>

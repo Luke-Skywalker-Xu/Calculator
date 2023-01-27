@@ -5,6 +5,7 @@ import javafx.application.Platform;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
@@ -23,7 +24,6 @@ import javafx.stage.Stage;
 import org.luke.UI.NumButton;
 import org.luke.UI.NumTextField;
 
-
 import java.awt.*;
 import java.io.IOException;
 import java.net.URI;
@@ -32,27 +32,19 @@ import java.util.function.UnaryOperator;
 
 public class MainApplication extends Application {
 
-
-    //设置固定窗口大小
-    boolean setResizable = false;
-
+    String version = "  计算器 v0.1.2-alpha";
     //设置图标图片
     String iconSrc = "img/Calcualtor.png";
-
     //设置标题
-    String Tittle = "计算器";
+    String primaryStageTittle = "计算器";
     //场景高度
     double primaryStageHeight = 360;
-
     //场景宽度
     double primaryStageWidth = 270;
-
     // 定义一个字符串来存储当前的运算符
     private String operator = "";
-
     // 定义一个变量来存储当前的第一个数字
     private double firstNumber = 0;
-
     // 定义一个变量来存储当前的第二个数字
     private double secondNumber = 0;
 
@@ -83,15 +75,77 @@ public class MainApplication extends Application {
 //-----------------------------------------------------------------------------------//
 
         //fileMenu菜单栏
-
         //创建fileMenu
         Menu fileMenu = new Menu("文件");
 
 //-----------------------------------------------------------------------------------//
 
-        //创建fileMenuItem
+        //创建设置菜单项
         MenuItem setMenuItem = new MenuItem("设置");
 
+//-----------------------------------------------------------------------------------//
+
+        //进入设置页面
+        setMenuItem.setOnAction(event -> {
+            VBox settingsLabel = new VBox();
+            settingsLabel.setPadding(new Insets(10));
+            settingsLabel.setSpacing(8);
+
+//-----------------------------------------------------------------------------------//
+
+            Label appearanceLabel = new Label("外观:");
+            ComboBox<String> appearanceComboBox = new ComboBox<>();
+
+            appearanceComboBox.getItems().addAll("默认", "绿色", "粉色");
+            appearanceComboBox.getSelectionModel().select("默认");
+            appearanceComboBox.setOnAction(eventappearanceComboBox -> {
+                String selectedItem = appearanceComboBox.getValue();
+                if (selectedItem.equals("默认")) {
+                    System.out.println("默认");
+                } else if (selectedItem.equals("绿色")) {
+                    System.out.println("绿色");
+                } else if (selectedItem.equals("粉色")) {
+                    System.out.println("粉色");
+                }
+            });
+
+//-----------------------------------------------------------------------------------//
+
+            Label languageLabel = new Label("语言:");
+            ComboBox<String> languageComboBox = new ComboBox<>();
+
+            languageComboBox.getItems().addAll("中文", "English");
+            languageComboBox.getSelectionModel().select("中文");
+            languageComboBox.setOnAction(eventlanguageComboBox -> {
+                {
+                    String selectedItem = languageComboBox.getValue();
+                    if (selectedItem.equals("中文")) {
+                        System.out.println("中文");
+                    } else if (selectedItem.equals("English")) {
+                        System.out.println("English");
+                    }
+                }
+            });
+
+
+//-----------------------------------------------------------------------------------//
+
+            settingsLabel.getChildren().addAll(appearanceLabel, appearanceComboBox, languageLabel, languageComboBox);
+            VBox settingsLayout = new VBox(settingsLabel);
+            Scene settingsScene = new Scene(settingsLayout);
+            Stage settingsStage = new Stage();
+            settingsStage.setScene(settingsScene);
+            settingsStage.setTitle("设置");
+            settingsStage.setX(primaryStage.getX());
+            settingsStage.setY(primaryStage.getY());
+            settingsStage.setWidth(primaryStageWidth);
+            settingsStage.setHeight(primaryStageHeight);
+            //获取主舞台的第一个图标
+            settingsStage.getIcons().add(primaryStage.getIcons().get(0));
+
+            settingsStage.setResizable(false);
+            settingsStage.show();
+        });
 
 //-----------------------------------------------------------------------------------//
 
@@ -108,7 +162,6 @@ public class MainApplication extends Application {
         //把setMenuItem加到fileMenu
         fileMenu.getItems().addAll(setMenuItem, editItem);
 
-
 //-----------------------------------------------------------------------------------//
 
         //helpMenu菜单栏
@@ -122,7 +175,6 @@ public class MainApplication extends Application {
         double height = primaryStageHeight;
         AboutMenuItem.setOnAction(event -> {
             Alert aboutMenuItemalert = new Alert(Alert.AlertType.INFORMATION);
-
 
 //-----------------------------------------------------------------------------------//
 
@@ -176,10 +228,8 @@ public class MainApplication extends Application {
 //-----------------------------------------------------------------------------------//
             //创建垂直布局管理器
             VBox vBox = new VBox(textAuthor, linkGitHub, vBoxContributors);
-
             //设置垂直布局管理器侧边距
             vBox.setPadding(new Insets(20, 10, 10, 20));
-
             //把垂直布局管理器插入关于菜单提示面板
             aboutMenuItemalert.getDialogPane().setContent(vBox);
 
@@ -208,22 +258,16 @@ public class MainApplication extends Application {
             //菜单提示框
             //标题
             String tittle = "关于 计算器";
-
             //头文字
-            String HeaderText = "  计算器 v0.1.0-alpha";
-
+            String HeaderText = version;
             //设置的标题
             aboutMenuItemalert.setTitle(tittle);
-
             //设置头文字
             aboutMenuItemalert.setHeaderText(HeaderText);
-
             //设置宽和高
             aboutMenuItemalert.getDialogPane().setPrefSize(width, height);
-
             //设置对话框的 icon 图标，参数是主窗口的 stage
             aboutMenuItemalert.initOwner(primaryStage);
-
             //运行模态窗口
             aboutMenuItemalert.showAndWait();
 
@@ -366,6 +410,8 @@ public class MainApplication extends Application {
             if (temp.equals("") || temp.equals(".")) {
                 System.out.println("height:" + primaryStage.getHeight());
                 System.out.println("Width:" + primaryStage.getWidth());
+//                Settings settings =new Settings();
+//                settings.setResizable(false);
                 return;
             }
             operator = "%";
@@ -455,19 +501,17 @@ public class MainApplication extends Application {
         primaryStage.setScene(new Scene(vBoxlayout));
         primaryStage.setWidth(primaryStageWidth);
         primaryStage.setHeight(primaryStageHeight);
-        primaryStage.setResizable(setResizable);
+        primaryStage.setResizable(false);
         primaryStage.show();
 
         //主窗口(primaryStage)设置图标
         primaryStage.getIcons().add(new Image(iconSrc));
 
         //主窗口(primaryStage)设置标题
-        primaryStage.setTitle(Tittle);
+        primaryStage.setTitle(primaryStageTittle);
 
         //展示主窗口(primaryStage)
         primaryStage.show();
-
-
     }
 
 //-----------------------------------------------------------------------------------//
