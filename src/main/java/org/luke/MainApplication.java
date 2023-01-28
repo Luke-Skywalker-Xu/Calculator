@@ -200,15 +200,13 @@ public class MainApplication extends Application {
 
 //-----------------------------------------------------------------------------------//
 
-        //将menuBar和standardGridPan添加到Vbox布局
-        VBox vBoxlayout = new VBox(menuBar, numTextField, buttonGridPan);
+        //将menuBar和standardGridPan添加到initVBox布局
+        VBox initVBox = new VBox(menuBar, numTextField, buttonGridPan);
 
 //-----------------------------------------------------------------------------------//
 
-        //把vBoxlayout放入主窗口(primaryStage)
-
-        //Scene vBoxlayout = new Scene(vBoxlayout);
-        primaryStage.setScene(new Scene(vBoxlayout));
+        //把initVBox放入主窗口(primaryStage)
+        primaryStage.setScene(new Scene(initVBox));
         primaryStage.setWidth(primaryStageWidth);
         primaryStage.setHeight(primaryStageHeight);
         primaryStage.setResizable(false);
@@ -226,6 +224,12 @@ public class MainApplication extends Application {
         //展示主窗口(primaryStage)
         primaryStage.show();
     }
+
+//-----------------------------------------------------------------------------------//
+
+//-----------------------------------------------------------------------------------//
+
+//-----------------------------------------------------------------------------------//
 
     private static TextField initTextField(UnaryOperator<TextFormatter.Change> filter) {
         // 定义计算器的文本框

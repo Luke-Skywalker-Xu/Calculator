@@ -12,8 +12,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7c8f7c35-549c-44d6-9e39-05e77f6adede" name="变更" comment="增加设置-改变颜色">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="7c8f7c35-549c-44d6-9e39-05e77f6adede" name="变更" comment="提取方法">
       <change beforePath="$PROJECT_DIR$/src/main/java/org/luke/MainApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/luke/MainApplication.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -147,7 +146,14 @@
       <option name="project" value="LOCAL" />
       <updated>1674848182404</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="提取方法">
+      <created>1674884610587</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1674884610587</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -167,6 +173,7 @@
     <MESSAGE value="Calculator_Source_code_v0.1.1-alpha" />
     <MESSAGE value="增加设置选项窗体" />
     <MESSAGE value="增加设置-改变颜色" />
-    <option name="LAST_COMMIT_MESSAGE" value="增加设置-改变颜色" />
+    <MESSAGE value="提取方法" />
+    <option name="LAST_COMMIT_MESSAGE" value="提取方法" />
   </component>
 </project>
