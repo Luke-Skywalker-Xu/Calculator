@@ -55,7 +55,6 @@ public class MainApplication extends Application {
 
     // 创建数字按钮
     NumButton button0 = new NumButton("0");
-
     NumButton button1 = new NumButton("1");
     NumButton button2 = new NumButton("2");
     NumButton button3 = new NumButton("3");
@@ -136,20 +135,23 @@ public class MainApplication extends Application {
             ComboBox<String> appearanceComboBox = new ComboBox<>();
 
             appearanceComboBox.getItems().addAll("默认", "绿色", "粉色");
-            appearanceComboBox.getSelectionModel().select("默认");
+
+            //设置appearanceComboBox的默认值为缓存中的
+            String colorName = prefs.get("color", "默认");;
+            appearanceComboBox.getSelectionModel().select(colorName);
             appearanceComboBox.setOnAction(eventappearanceComboBox -> {
                 String selectedItem = appearanceComboBox.getValue();
                 if (selectedItem.equals("默认")) {
-                    saveColor("null");
-                    loadColor("null");
+                    saveColor("默认");
+                    loadColor("默认");
 
                 } else if (selectedItem.equals("绿色")) {
-                    saveColor("green");
-                    loadColor("green");
+                    saveColor("绿色");
+                    loadColor("绿色");
 
                 } else if (selectedItem.equals("粉色")) {
-                    saveColor("pink");
-                    loadColor("pink");
+                    saveColor("粉色");
+                    loadColor("粉色");
                 }
             });
 
@@ -255,87 +257,103 @@ public class MainApplication extends Application {
     }
 
     private void saveColor(String color) {
+        if (color == null) {
+            prefs.put("color", "DEFAULT_COLOR");}
+        else
         prefs.put("color", color);
         loadColor(color);
     }
 
-
     private void loadColor(String color) {
         switch (color) {
-            case "green":
-                button0.setStyle(GREEN);
-                button1.setStyle(GREEN);
-                button2.setStyle(GREEN);
-                button3.setStyle(GREEN);
-                button4.setStyle(GREEN);
-                button5.setStyle(GREEN);
-                button6.setStyle(GREEN);
-                button7.setStyle(GREEN);
-                button8.setStyle(GREEN);
-                button9.setStyle(GREEN);
-                buttonDel.setStyle(GREEN);
-                buttonClear.setStyle(GREEN);
-                buttonDot.setStyle(GREEN);
-                buttonPlus.setStyle(GREEN);
-                buttonMinus.setStyle(GREEN);
-                buttonMultiply.setStyle(GREEN);
-                buttonDivide.setStyle(GREEN);
-                buttonEqual.setStyle(GREEN);
-                buttonCopy.setStyle(GREEN);
-                buttonMod.setStyle(GREEN);
+            case "绿色":
+                setGreen();
                 break;
-            case "pink":
-                button0.setStyle(PINK);
-                button1.setStyle(PINK);
-                button2.setStyle(PINK);
-                button3.setStyle(PINK);
-                button4.setStyle(PINK);
-                button5.setStyle(PINK);
-                button6.setStyle(PINK);
-                button7.setStyle(PINK);
-                button8.setStyle(PINK);
-                button9.setStyle(PINK);
-                buttonDel.setStyle(PINK);
-                buttonClear.setStyle(PINK);
-                buttonDot.setStyle(PINK);
-                buttonPlus.setStyle(PINK);
-                buttonMinus.setStyle(PINK);
-                buttonMultiply.setStyle(PINK);
-                buttonDivide.setStyle(PINK);
-                buttonEqual.setStyle(PINK);
-                buttonCopy.setStyle(PINK);
-                buttonMod.setStyle(PINK);
+            case "粉色":
+                setPink();
                 break;
-            case "null":
-                button0.setStyle(null);
-                button1.setStyle(null);
-                button2.setStyle(null);
-                button3.setStyle(null);
-                button4.setStyle(null);
-                button5.setStyle(null);
-                button6.setStyle(null);
-                button7.setStyle(null);
-                button8.setStyle(null);
-                button9.setStyle(null);
-                buttonDel.setStyle(null);
-                buttonClear.setStyle(null);
-                buttonDot.setStyle(null);
-                buttonPlus.setStyle(null);
-                buttonMinus.setStyle(null);
-                buttonMultiply.setStyle(null);
-                buttonDivide.setStyle(null);
-                buttonEqual.setStyle(null);
-                buttonCopy.setStyle(null);
-                buttonMod.setStyle(null);
+            case "默认":
+                setNull();
                 break;
         }
     }
 
-//-----------------------------------------------------------------------------------//
+
 
 //-----------------------------------------------------------------------------------//
 
 //-----------------------------------------------------------------------------------//
+
+//-----------------------------------------------------------------------------------//
+
+    private void setGreen() {
+        button0.setStyle(GREEN);
+        button1.setStyle(GREEN);
+        button2.setStyle(GREEN);
+        button3.setStyle(GREEN);
+        button4.setStyle(GREEN);
+        button5.setStyle(GREEN);
+        button6.setStyle(GREEN);
+        button7.setStyle(GREEN);
+        button8.setStyle(GREEN);
+        button9.setStyle(GREEN);
+        buttonDel.setStyle(GREEN);
+        buttonClear.setStyle(GREEN);
+        buttonDot.setStyle(GREEN);
+        buttonPlus.setStyle(GREEN);
+        buttonMinus.setStyle(GREEN);
+        buttonMultiply.setStyle(GREEN);
+        buttonDivide.setStyle(GREEN);
+        buttonEqual.setStyle(GREEN);
+        buttonCopy.setStyle(GREEN);
+        buttonMod.setStyle(GREEN);
+    }
+
+    private void setPink() {
+        button0.setStyle(PINK);
+        button1.setStyle(PINK);
+        button2.setStyle(PINK);
+        button3.setStyle(PINK);
+        button4.setStyle(PINK);
+        button5.setStyle(PINK);
+        button6.setStyle(PINK);
+        button7.setStyle(PINK);
+        button8.setStyle(PINK);
+        button9.setStyle(PINK);
+        buttonDel.setStyle(PINK);
+        buttonClear.setStyle(PINK);
+        buttonDot.setStyle(PINK);
+        buttonPlus.setStyle(PINK);
+        buttonMinus.setStyle(PINK);
+        buttonMultiply.setStyle(PINK);
+        buttonDivide.setStyle(PINK);
+        buttonEqual.setStyle(PINK);
+        buttonCopy.setStyle(PINK);
+        buttonMod.setStyle(PINK);
+    }
+
+    private void setNull() {
+        button0.setStyle(null);
+        button1.setStyle(null);
+        button2.setStyle(null);
+        button3.setStyle(null);
+        button4.setStyle(null);
+        button5.setStyle(null);
+        button6.setStyle(null);
+        button7.setStyle(null);
+        button8.setStyle(null);
+        button9.setStyle(null);
+        buttonDel.setStyle(null);
+        buttonClear.setStyle(null);
+        buttonDot.setStyle(null);
+        buttonPlus.setStyle(null);
+        buttonMinus.setStyle(null);
+        buttonMultiply.setStyle(null);
+        buttonDivide.setStyle(null);
+        buttonEqual.setStyle(null);
+        buttonCopy.setStyle(null);
+        buttonMod.setStyle(null);
+    }
 
     private static TextField initTextField(UnaryOperator<TextFormatter.Change> filter) {
         // 定义计算器的文本框
@@ -365,7 +383,6 @@ public class MainApplication extends Application {
         standardGridPan.setHgap(5);
 
         // 将数字按钮添加到第二、三、四行
-
         GridPane.setConstraints(button7, 1, 2);
         GridPane.setConstraints(button8, 2, 2);
         GridPane.setConstraints(button9, 3, 2);
@@ -577,12 +594,12 @@ public class MainApplication extends Application {
             scrollPaneContributors.setVbarPolicy(ScrollPane.ScrollBarPolicy.AS_NEEDED);
             scrollPaneContributors.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
 
-
             VBox vBoxContributors = new VBox(textAreaContributors, scrollPaneContributors);
             vBoxContributors.setPadding(new Insets(10, 0, 0, 0));
 
 
 //-----------------------------------------------------------------------------------//
+
             //创建垂直布局管理器
             VBox vBox = new VBox(textAuthor, linkGitHub, vBoxContributors);
             //设置垂直布局管理器侧边距
@@ -611,7 +628,6 @@ public class MainApplication extends Application {
 
 //-----------------------------------------------------------------------------------//
 
-
             //菜单提示框
             //标题
             String tittle = "关于 计算器";
@@ -632,7 +648,6 @@ public class MainApplication extends Application {
         return AboutMenuItem;
     }
 
-
     private void initSettingStage(Stage primaryStage, Scene settingsScene) {
         Stage settingsStage = new Stage();
         settingsStage.setScene(settingsScene);
@@ -641,7 +656,6 @@ public class MainApplication extends Application {
         settingsStage.setY(primaryStage.getY());
         settingsStage.setWidth(primaryStageWidth);
         settingsStage.setHeight(primaryStageHeight);
-
 
         //获取主舞台的第一个图标
         settingsStage.getIcons().add(primaryStage.getIcons().get(0));
