@@ -19,7 +19,7 @@
         <option name="nativeBundle" value="all" />
         <option name="title" value="Calculator" />
         <option name="vendor" value="Luke" />
-        <option name="version" value="v0.1.2-alpha" />
+        <option name="version" value="v0.1.3-alpha" />
       </options>
     </properties>
     <root id="root">

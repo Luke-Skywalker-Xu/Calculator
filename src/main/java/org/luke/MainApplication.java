@@ -29,11 +29,14 @@ import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.function.UnaryOperator;
+import java.util.prefs.Preferences;
+
+import static javafx.scene.paint.Color.PINK;
 
 public class MainApplication extends Application {
 
 
-    String version = "  计算器 v0.1.2-alpha";
+    String version = "  计算器 v0.1.3-alpha";
     //设置图标图片
     String iconSrc = "img/Calcualtor.png";
     //设置标题
@@ -48,34 +51,42 @@ public class MainApplication extends Application {
     private double firstNumber = 0;
     // 定义一个变量来存储当前的第二个数字
     private double secondNumber = 0;
+    public static Preferences prefs = Preferences.userNodeForPackage(MainApplication.class);
 
+    // 创建数字按钮
+    NumButton button0 = new NumButton("0");
+
+    NumButton button1 = new NumButton("1");
+    NumButton button2 = new NumButton("2");
+    NumButton button3 = new NumButton("3");
+    NumButton button4 = new NumButton("4");
+    NumButton button5 = new NumButton("5");
+    NumButton button6 = new NumButton("6");
+    NumButton button7 = new NumButton("7");
+    NumButton button8 = new NumButton("8");
+    NumButton button9 = new NumButton("9");
+    NumButton buttonDel = new NumButton("⌫");// U+232B
+    NumButton buttonClear = new NumButton("C");
+    NumButton buttonDot = new NumButton("‧");//= U+2027
+    NumButton buttonPlus = new NumButton("＋");
+    NumButton buttonMinus = new NumButton("－");
+    NumButton buttonMultiply = new NumButton("×");
+    NumButton buttonDivide = new NumButton("÷");
+    NumButton buttonEqual = new NumButton("＝");
+    NumButton buttonCopy = new NumButton("⎘");//U+2398
+    NumButton buttonMod = new NumButton("M");
+
+    String PINK = "-fx-background-color:PINK";
+    String GREEN = "-fx-background-color:GREEN";
 
     @Override
     //在应用程序(Application)中创建主场景(primaryStage)
     public void start(Stage primaryStage) {
 
-        // 创建数字按钮
-        NumButton button0 = new NumButton("0");
-        NumButton button1 = new NumButton("1");
-        NumButton button2 = new NumButton("2");
-        NumButton button3 = new NumButton("3");
-        NumButton button4 = new NumButton("4");
-        NumButton button5 = new NumButton("5");
-        NumButton button6 = new NumButton("6");
-        NumButton button7 = new NumButton("7");
-        NumButton button8 = new NumButton("8");
-        NumButton button9 = new NumButton("9");
+        Preferences prefs = Preferences.userNodeForPackage(MainApplication.class);
 
-        NumButton buttonDel = new NumButton("⌫");// U+232B
-        NumButton buttonClear = new NumButton("C");
-        NumButton buttonDot = new NumButton("‧");//= U+2027
-        NumButton buttonPlus = new NumButton("＋");
-        NumButton buttonMinus = new NumButton("－");
-        NumButton buttonMultiply = new NumButton("×");
-        NumButton buttonDivide = new NumButton("÷");
-        NumButton buttonEqual = new NumButton("＝");
-        NumButton buttonCopy = new NumButton("⎘");//U+2398
-        NumButton buttonMod = new NumButton("M");
+        //从缓存中设置存储的颜色
+        loadColor(prefs.get("color", ""));
 
 //-----------------------------------------------------------------------------------//
 
@@ -122,7 +133,25 @@ public class MainApplication extends Application {
             //外观标签
             Label appearanceLabel = new Label("外观:");
             //初始化外观选择选择框
-            ComboBox<String> appearanceComboBox = initColorComboBox(button0, button1, button2, button3, button4, button5, button6, button7, button8, button9, buttonDel, buttonClear, buttonDot, buttonPlus, buttonMinus, buttonMultiply, buttonDivide, buttonEqual, buttonCopy, buttonMod);
+            ComboBox<String> appearanceComboBox = new ComboBox<>();
+
+            appearanceComboBox.getItems().addAll("默认", "绿色", "粉色");
+            appearanceComboBox.getSelectionModel().select("默认");
+            appearanceComboBox.setOnAction(eventappearanceComboBox -> {
+                String selectedItem = appearanceComboBox.getValue();
+                if (selectedItem.equals("默认")) {
+                    saveColor("null");
+                    loadColor("null");
+
+                } else if (selectedItem.equals("绿色")) {
+                    saveColor("green");
+                    loadColor("green");
+
+                } else if (selectedItem.equals("粉色")) {
+                    saveColor("pink");
+                    loadColor("pink");
+                }
+            });
 
 //-----------------------------------------------------------------------------------//
 
@@ -223,6 +252,83 @@ public class MainApplication extends Application {
 
         //展示主窗口(primaryStage)
         primaryStage.show();
+    }
+
+    private void saveColor(String color) {
+        prefs.put("color", color);
+        loadColor(color);
+    }
+
+
+    private void loadColor(String color) {
+        switch (color) {
+            case "green":
+                button0.setStyle(GREEN);
+                button1.setStyle(GREEN);
+                button2.setStyle(GREEN);
+                button3.setStyle(GREEN);
+                button4.setStyle(GREEN);
+                button5.setStyle(GREEN);
+                button6.setStyle(GREEN);
+                button7.setStyle(GREEN);
+                button8.setStyle(GREEN);
+                button9.setStyle(GREEN);
+                buttonDel.setStyle(GREEN);
+                buttonClear.setStyle(GREEN);
+                buttonDot.setStyle(GREEN);
+                buttonPlus.setStyle(GREEN);
+                buttonMinus.setStyle(GREEN);
+                buttonMultiply.setStyle(GREEN);
+                buttonDivide.setStyle(GREEN);
+                buttonEqual.setStyle(GREEN);
+                buttonCopy.setStyle(GREEN);
+                buttonMod.setStyle(GREEN);
+                break;
+            case "pink":
+                button0.setStyle(PINK);
+                button1.setStyle(PINK);
+                button2.setStyle(PINK);
+                button3.setStyle(PINK);
+                button4.setStyle(PINK);
+                button5.setStyle(PINK);
+                button6.setStyle(PINK);
+                button7.setStyle(PINK);
+                button8.setStyle(PINK);
+                button9.setStyle(PINK);
+                buttonDel.setStyle(PINK);
+                buttonClear.setStyle(PINK);
+                buttonDot.setStyle(PINK);
+                buttonPlus.setStyle(PINK);
+                buttonMinus.setStyle(PINK);
+                buttonMultiply.setStyle(PINK);
+                buttonDivide.setStyle(PINK);
+                buttonEqual.setStyle(PINK);
+                buttonCopy.setStyle(PINK);
+                buttonMod.setStyle(PINK);
+                break;
+            case "null":
+                button0.setStyle(null);
+                button1.setStyle(null);
+                button2.setStyle(null);
+                button3.setStyle(null);
+                button4.setStyle(null);
+                button5.setStyle(null);
+                button6.setStyle(null);
+                button7.setStyle(null);
+                button8.setStyle(null);
+                button9.setStyle(null);
+                buttonDel.setStyle(null);
+                buttonClear.setStyle(null);
+                buttonDot.setStyle(null);
+                buttonPlus.setStyle(null);
+                buttonMinus.setStyle(null);
+                buttonMultiply.setStyle(null);
+                buttonDivide.setStyle(null);
+                buttonEqual.setStyle(null);
+                buttonCopy.setStyle(null);
+                buttonMod.setStyle(null);
+                break;
+        }
     }
 
 //-----------------------------------------------------------------------------------//
@@ -410,6 +516,7 @@ public class MainApplication extends Application {
                     break;
             }
         });
+
     }
 
     private static UnaryOperator<TextFormatter.Change> getChangeUnaryOperator() {
@@ -422,6 +529,7 @@ public class MainApplication extends Application {
         };
         return filter;
     }
+
 
     private MenuItem initAboutMenuItem(Stage primaryStage) {
         MenuItem AboutMenuItem = new MenuItem("关于");
@@ -524,6 +632,7 @@ public class MainApplication extends Application {
         return AboutMenuItem;
     }
 
+
     private void initSettingStage(Stage primaryStage, Scene settingsScene) {
         Stage settingsStage = new Stage();
         settingsStage.setScene(settingsScene);
@@ -532,92 +641,13 @@ public class MainApplication extends Application {
         settingsStage.setY(primaryStage.getY());
         settingsStage.setWidth(primaryStageWidth);
         settingsStage.setHeight(primaryStageHeight);
+
+
         //获取主舞台的第一个图标
         settingsStage.getIcons().add(primaryStage.getIcons().get(0));
 
         settingsStage.setResizable(false);
         settingsStage.show();
-    }
-
-    private static ComboBox<String> initColorComboBox(Button button0, Button button1, Button button2, Button button3, Button button4, Button button5, Button button6, Button button7, Button button8, Button button9, Button buttonDel, Button buttonClear, Button buttonDot, Button buttonPlus, Button buttonMinus, Button buttonMultiply, Button buttonDivide, Button buttonEqual, Button buttonCopy, Button buttonMod) {
-        ComboBox<String> appearanceComboBox = new ComboBox<>();
-
-        appearanceComboBox.getItems().addAll("默认", "绿色", "粉色");
-        appearanceComboBox.getSelectionModel().select("默认");
-        appearanceComboBox.setOnAction(eventappearanceComboBox -> {
-
-            String PINK = "-fx-background-color:PINK";
-            String GREEN = "-fx-background-color:GREEN";
-            String selectedItem = appearanceComboBox.getValue();
-            if (selectedItem.equals("默认")) {
-                button0.setStyle(null);
-                button1.setStyle(null);
-                button2.setStyle(null);
-                button3.setStyle(null);
-                button4.setStyle(null);
-                button5.setStyle(null);
-                button6.setStyle(null);
-                button7.setStyle(null);
-                button8.setStyle(null);
-                button9.setStyle(null);
-                buttonDel.setStyle(null);
-                buttonClear.setStyle(null);
-                buttonDot.setStyle(null);
-                buttonPlus.setStyle(null);
-                buttonMinus.setStyle(null);
-                buttonMultiply.setStyle(null);
-                buttonDivide.setStyle(null);
-                buttonEqual.setStyle(null);
-                buttonCopy.setStyle(null);
-                buttonMod.setStyle(null);
-
-            } else if (selectedItem.equals("绿色")) {
-                button0.setStyle(GREEN);
-                button1.setStyle(GREEN);
-                button2.setStyle(GREEN);
-                button3.setStyle(GREEN);
-                button4.setStyle(GREEN);
-                button5.setStyle(GREEN);
-                button6.setStyle(GREEN);
-                button7.setStyle(GREEN);
-                button8.setStyle(GREEN);
-                button9.setStyle(GREEN);
-                buttonDel.setStyle(GREEN);
-                buttonClear.setStyle(GREEN);
-                buttonDot.setStyle(GREEN);
-                buttonPlus.setStyle(GREEN);
-                buttonMinus.setStyle(GREEN);
-                buttonMultiply.setStyle(GREEN);
-                buttonDivide.setStyle(GREEN);
-                buttonEqual.setStyle(GREEN);
-                buttonCopy.setStyle(GREEN);
-                buttonMod.setStyle(GREEN);
-
-            } else if (selectedItem.equals("粉色")) {
-                button0.setStyle(PINK);
-                button1.setStyle(PINK);
-                button2.setStyle(PINK);
-                button3.setStyle(PINK);
-                button4.setStyle(PINK);
-                button5.setStyle(PINK);
-                button6.setStyle(PINK);
-                button7.setStyle(PINK);
-                button8.setStyle(PINK);
-                button9.setStyle(PINK);
-                buttonDel.setStyle(PINK);
-                buttonClear.setStyle(PINK);
-                buttonDot.setStyle(PINK);
-                buttonPlus.setStyle(PINK);
-                buttonMinus.setStyle(PINK);
-                buttonMultiply.setStyle(PINK);
-                buttonDivide.setStyle(PINK);
-                buttonEqual.setStyle(PINK);
-                buttonCopy.setStyle(PINK);
-                buttonMod.setStyle(PINK);
-
-            }
-        });
-        return appearanceComboBox;
     }
 
 

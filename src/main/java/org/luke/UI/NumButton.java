@@ -1,6 +1,7 @@
 package org.luke.UI;
 
 import javafx.scene.control.Button;
+import org.luke.MainApplication;
 
 
 public class NumButton extends Button {
@@ -16,11 +17,12 @@ public class NumButton extends Button {
     //是否可以获取焦点
     boolean setFocusTraversable = false;
 
+
+
     public NumButton(String text) {
         super(text);
         //最小宽度
-
-
+        setStyle(MainApplication.prefs.get("color",""));
 //-----------------------------------------------------------------------------------//
 
         //设置最小尺寸
