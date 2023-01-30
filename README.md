@@ -19,9 +19,11 @@ To build Calculator, make sure that the following tools or libraries are availab
 1. openjdk: 1.8.0
 1. Maven: 3.8.1
 
-<span id="Compile it yourself" ## Building Aftifacts Calculator</span>
+
+ <span id="Compile it yourself" > </span>
+## Building Aftifacts Calculator 
  
-We assume that you are using IntelliJ IDEA
+We assume that you are using IntelliJ IDEA 
 
 First pull the code in IntelliJ IDEA, you can copy to use this code
  
@@ -55,6 +57,6 @@ Then double-click the calculator in the file to run the software
 
 At present, only executable programs for windows and linux platforms are provided. If you need executable programs for MacOS platforms.
 compile it yourself
-<a href="Compile it yourself">Compile it yourself</a>
+<a href="#Compile it yourself">Compile it yourself</a>
 
 
