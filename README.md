@@ -29,6 +29,8 @@ First pull the code in IntelliJ IDEA, you can copy to use this code
  
 <pre><code>git clone https://github.com/Luke-Skywalker-Xu/Calculator.git</code></pre>
 
+Step:
+
 1. File -> Projects Structure 
 2. Project Settings -> Aftifacts - > + (Add) -> JavaFx Application -> From Module'Calculator' -> JavaFx
 
@@ -50,7 +52,8 @@ After the build is complete, the executable file path: out/artifacts/Calculator/
 
 Then double-click the calculator in the file to run the software
 
- ## Download (Compiled and packaged files)
+ ## Download 
+You can directly use my compiled executable program:
  
   - **Windows** ([Download](https://github.com/Luke-Skywalker-Xu/Calculator/releases))
   - **linux** ([Download](https://github.com/Luke-Skywalker-Xu/Calculator/releases))
