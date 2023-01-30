@@ -55,8 +55,8 @@
 ## 下载 
 你可以直接使用我编译好的可执行程序:
 
-- **Windows** ([Download](https://github.com/Luke-Skywalker-Xu/Calculator/releases))
-- **linux** ([Download](https://github.com/Luke-Skywalker-Xu/Calculator/releases))
+- **Windows** ([下载](https://github.com/Luke-Skywalker-Xu/Calculator/releases))
+- **GNU/Linux** ([下载](https://github.com/Luke-Skywalker-Xu/Calculator/releases))
 
 目前只提供windows和linux平台的可执行程序。 如果您需要适用于 MacOS 平台的可执行程序。
 

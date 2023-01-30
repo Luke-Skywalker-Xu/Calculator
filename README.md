@@ -57,7 +57,7 @@ Then double-click the calculator in the file to run the software
 You can directly use my compiled executable program:
  
   - **Windows** ([Download](https://github.com/Luke-Skywalker-Xu/Calculator/releases))
-  - **linux** ([Download](https://github.com/Luke-Skywalker-Xu/Calculator/releases))
+  - **GNU/Linux** ([Download](https://github.com/Luke-Skywalker-Xu/Calculator/releases))
 
 At present, only executable programs for windows and linux platforms are provided. If you need executable programs for MacOS platforms.
 compile it yourself
