@@ -14,14 +14,15 @@ It focuses on:
  - **Cross-platform** (It supports three major platforms: GNU/Linux, Windows and macOS)
  
  ## Building Calculator
- ### Building Prerequistes
+ ### Building Prerequisites
 To build Calculator, make sure that the following tools or libraries are available on your Windows, Linux or macOS system:
 1. openjdk: 1.8.0
-1. Maven: 3.8.1
+2. Maven: 3.8.1
 
 
  <span id="Compile it yourself" > </span>
-## Building Aftifacts Calculator 
+
+## Building Artifacts Calculator 
  
 We assume that you are using IntelliJ IDEA 
 
@@ -32,21 +33,21 @@ First pull the code in IntelliJ IDEA, you can copy to use this code
 Step:
 
 1. File -> Projects Structure 
-2. Project Settings -> Aftifacts - > + (Add) -> JavaFx Application -> From Module'Calculator' -> JavaFx
+2. Project Settings -> Artifacts - > + (Add) -> JavaFx Application -> From Module'Calculator' -> JavaFx
 
 <details>
 <summary>JavaFx configuration (required)</summary>
 
 1. Application class -> MainApplication(org.luke) -> OK
-1. Title: Calculator 
-1. Native bundle: all
-1. Apply
+2. Title: Calculator 
+3. Native bundle: all
+4. Apply
 
 </details>
 
 3. File -> Projects Structure 
-4. Project Settings -> Aftifacts - > + (Add) -> JavaFx Application -> From Module'Calculator' -> JavaFx
-5. Build -> Build Aftifacts... -> Calculator -> Build
+4. Project Settings -> Artifacts - > + (Add) -> JavaFx Application -> From Module'Calculator' -> JavaFx
+5. Build -> Build Artifacts... -> Calculator -> Build
 
 After the build is complete, the executable file path: out/artifacts/Calculator/bundles/Calculator
 
