@@ -14,14 +14,14 @@
 - **跨平台** (支持三大平台：GNU/Linux、Windows和MacOS)
 
 ## 构建Calculator
-### 先决条件
-要构建计算器，请确保以下工具或库在您的 Windows、Linux 或 macOS 系统上可用：
+### 构建的先决条件
+要构建Calculator，请确保以下工具或库在您的 Windows、Linux 或 macOS 系统上可用：
 1. openjdk: 1.8.0
 2. Maven: 3.8.1
 
  <span id="自己编译" > </span>
 
-## Artifacts Calculator 
+## Building Artifacts Calculator 
 
 我们假设您正在使用 IntelliJ IDEA
 
