@@ -4,7 +4,7 @@
 ![](https://img.shields.io/badge/Ubuntu-Passing-49%2C198%2C84.svg?style=falt&logo=Ubuntu)
 ![](https://img.shields.io/badge/MacOS-Passing-49%2C198%2C84.svg?style=falt&logo=Apple)
 
-[不会英语?点击此处打开"中文介绍"](README_zh.md)
+[不会英语?点击此处打开中文"自述"(README)](README_zh.md)
 
 A calculator software based on JavaFX
 
