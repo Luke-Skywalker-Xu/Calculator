@@ -1,10 +1,10 @@
 # Calculator
 
-![Windows](https://github.com/Luke-Skywalker-Xu/IconPark/blob/main/resources/Img/badge_Windows.svg)
-![Ubuntu](https://github.com/Luke-Skywalker-Xu/IconPark/blob/main/resources/Img/badge_Ubuntu.svg)
-![MacOS](https://github.com/Luke-Skywalker-Xu/IconPark/blob/main/resources/Img/badge_MacOS.svg)
+![](https://img.shields.io/badge/Windows-Passing-49%2C198%2C84.svg?style=falt&logo=Windows)
+![](https://img.shields.io/badge/Ubuntu-Passing-49%2C198%2C84.svg?style=falt&logo=Ubuntu)
+![](https://img.shields.io/badge/MacOS-Passing-49%2C198%2C84.svg?style=falt&logo=Apple)
 
-[中文介绍](README_zh.md)
+[不会英语?点击此处打开"中文介绍"](README_zh.md)
 
 A calculator software based on JavaFX
 
